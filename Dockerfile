@@ -1,13 +1,11 @@
+# Use an official OSRM image
 FROM ghcr.io/project-osrm/osrm-backend:latest
 
 # Set the working directory
 WORKDIR /data
 
-RUN wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
-
-
-# Copy the OSM data file into the container
-COPY vietnam-latest.osm.pbf /data/vietnam-latest.osm.pbf
+# Download the OSM data file for Vietnam
+RUN wget http://download.geofabrik.de/asia/vietnam-latest.osm.pbf
 
 # Pre-process the OSM data file (extract, partition, and customize)
 RUN osrm-extract -p /opt/car.lua /data/vietnam-latest.osm.pbf && \
