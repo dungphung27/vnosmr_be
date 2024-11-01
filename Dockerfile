@@ -3,6 +3,9 @@ FROM ghcr.io/project-osrm/osrm-backend:latest
 # Set the working directory
 WORKDIR /data
 
+RUN wget http://download.geofabrik.de/europe/germany/berlin-latest.osm.pbf
+
+
 # Copy the OSM data file into the container
 COPY vietnam-latest.osm.pbf /data/vietnam-latest.osm.pbf
 
