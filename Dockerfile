@@ -4,6 +4,9 @@ FROM ghcr.io/project-osrm/osrm-backend:latest
 # Set the working directory
 WORKDIR /data
 
+# Install wget
+RUN apt-get update && apt-get install -y wget
+
 # Download the OSM data file for Vietnam
 RUN wget http://download.geofabrik.de/asia/vietnam-latest.osm.pbf
 
